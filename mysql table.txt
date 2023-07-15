@@ -1,0 +1,108 @@
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 5.1.45-community MySQL Community Server (GPL)
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| db                 |
+| mounika            |
+| mysql              |
+| test               |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use mounika;
+Database changed
+mysql> create table sample(first_name VARCHAR(100),email VARCHAR(100));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_mounika |
++-------------------+
+| mounika           |
+| sample            |
++-------------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into sample(first_name,email)values('mounika','mounika@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into sample(first_name,email)values('devika','devika@gmail.com'),('sravani','sravani@gmail.com'),('sanjana','sanjana@gmail.com');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select *from sample;
++------------+-------------------+
+| first_name | email             |
++------------+-------------------+
+| mounika    | mounika@gmail.com |
+| devika     | devika@gmail.com  |
+| sravani    | sravani@gmail.com |
+| sanjana    | sanjana@gmail.com |
++------------+-------------------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> update sample SET age = '20' WHERE first_name='mounika';
+ERROR 1054 (42S22): Unknown column 'age' in 'field list'
+mysql> ALTER TABLE sample ADD age VARCHAR(3);
+Query OK, 4 rows affected (0.02 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select *from sample;
++------------+-------------------+------+
+| first_name | email             | age  |
++------------+-------------------+------+
+| mounika    | mounika@gmail.com | NULL |
+| devika     | devika@gmail.com  | NULL |
+| sravani    | sravani@gmail.com | NULL |
+| sanjana    | sanjana@gmail.com | NULL |
++------------+-------------------+------+
+4 rows in set (0.00 sec)
+
+mysql>  update sample SET age = '20' WHERE first_name='mounika';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from sample;
++------------+-------------------+------+
+| first_name | email             | age  |
++------------+-------------------+------+
+| mounika    | mounika@gmail.com | 20   |
+| devika     | devika@gmail.com  | NULL |
+| sravani    | sravani@gmail.com | NULL |
+| sanjana    | sanjana@gmail.com | NULL |
++------------+-------------------+------+
+4 rows in set (0.00 sec)
+
+mysql> update sample SET age = '20' WHERE first_name='devika';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  update sample SET age = '20' WHERE first_name='sravani';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  update sample SET age = '20' WHERE first_name='sanjana';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from sample;
++------------+-------------------+------+
+| first_name | email             | age  |
++------------+-------------------+------+
+| mounika    | mounika@gmail.com | 20   |
+| devika     | devika@gmail.com  | 20   |
+| sravani    | sravani@gmail.com | 20   |
+| sanjana    | sanjana@gmail.com | 20   |
++------------+-------------------+------+
+4 rows in set (0.00 sec)
+
+mysql>
